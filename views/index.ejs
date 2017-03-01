@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%=category%></title>
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="/lib/jquery-easyui-1.5/jquery.min.js"></script>
+    <script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .div1{
+        transform-style:preserve-3d;
+        width:200px; height:200px;
+        position:relative;
+        transition:all 1s;
+        margin: 0 auto;
+
+    }
+    .div1:hover{
+        transform:rotateY(180deg);
+
+    }
+    .div1 img {
+        position:absolute;left:0px;rotateY(180deg);
+        width:200px;height:200px;
+    }
+    .div1 img {
+        z-index:2;
+        position:absolute;left:0px; transform:
+        width:200px;height:200px;
+    }
+
+</style>
+<body>
+<% include head.ejs %>
+<div style="overflow: hidden;zoom: 1;">
+    <div class="btn-group" style="margin-left: 560px;margin-bottom: 40px;">
+        <%if(page>1){%>
+        <a  href="/?category=<%=category%>&searchTxt=<%=searchTxt%>&page=<%=page-1%>"  class="btn btn-primary"><span class="glyphicon glyphicon-search">上一页</span></a>
+        <%}%>
+        <%if(isNextPage){%>
+        <a href="/?category=<%=category%>&searchTxt=<%=searchTxt%>&page=<%=page+1%>"  class="btn btn-primary"><span class="glyphicon glyphicon-search">下一页</span></a>
+        <%}%>
+    </div>
+<div>
+<%for(var item of rows){%>
+    <div class="col-sm-6 col-md-3 col-lg-2" style="text-align: center; width:300px;height:600px;
+    font-family: 'Microsoft YaHei';">
+        <div class="div1">
+          <img src="<%=item.imgUrl%>" width="200" height="200" />
+        </div>
+        <h3><%=item.name%></h3>
+        <h4><%=item.author%></h4>
+        <p style="height:240px;overflow: hidden;"><%=item.description%></p>
+        <p class="btn-group">
+            <a href="/viewnovel?id=<%=item._id%>"class="btn btn-primary" role="button">
+                查看章节
+            </a>
+            <a href="/viewsection?id=<%=item._id%>"class="btn btn-default" role="button">
+                阅读
+            </a>
+        </p>
+    </div>
+<%}%>
+</div>
+</div>
+<% include footer.ejs%>
+
+</body>
+</html>

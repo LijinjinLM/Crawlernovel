@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>mian的后台管理</title>
+    <link rel="stylesheet" href="../lib/jquery-easyui-1.5/themes/default/easyui.css"/>
+    <link rel="stylesheet" href="../lib/jquery-easyui-1.5/themes/icon.css"/>
+    <script src="../lib/jquery-easyui-1.5/jquery.min.js"></script>
+    <script src="../lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script src="../lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div class="easyui-layout" fit="true">
+    <div region="north" border="false" style="height:30px;padding-left: 10px;padding-top: 2px;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-admin" plain="true">图书系统管理</a>
+    </div>
+    <div region="west" style="width:150px;" title="菜单栏">
+        <div  class="easyui-accordion" border="false" fit="true">
+            <div title="控制面板" iconCls="icon-save"></div>
+            <div title="书籍管理" iconCls="icon-reload" selected="true" style="padding:20px;">
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true">书籍管理</a></div>
+            </div>
+        </div>
+    </div>
+    <div region="center" class="easyui-tabs" fit="true" boder="false">
+            <div title="关于我们">
+               本小说站点
+            </div>
+    </div>
+</div>
+</body>
+<html>

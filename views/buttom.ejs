@@ -1,0 +1,20 @@
+<div class="text-center">
+    <div class="btn-group">
+        <%if(index>0){%>
+        <a href="/viewsection?id=<%=novel._id%>&index=<%=index-1%>" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+            上一章
+        </a>
+        <%}%>
+        <a href="/viewnovel?id=<%=novel._id%>" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+            目录
+        </a>
+        <%if(index<novel.sections.length-1){%>
+        <a href="/viewsection?id=<%=novel._id%>&index=<%=index+1%>" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+            下一章
+        </a>
+        <%}%>
+    </div>
+</div>

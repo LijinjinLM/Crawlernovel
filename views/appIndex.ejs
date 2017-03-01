@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>免费小说app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="/lib/mui-master/dist/css/mui.min.css">
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-icon mui-icon-bars mui-pull-left mui-plus-visible"></a>
+    <a id="info" class="mui-icon mui-icon-info-filled mui-pull-right" style="color: #999;"></a>
+    <h1 class="mui-title">免费小说app</h1>
+</header>
+<div class="mui-content">
+    <ul mui-table-view mui-grid-view>
+        <%for(var item of rows){%>
+            <li class="mui-table-view-cell mui-media mui-col-xs-6" style="list-style: none;float: left;">
+                <a href="#"><img class="mui-media-object" style="width:200px;height:250px;" src="<%=item.imgUrl%>">
+                    <div class="mui-media-body"><%=item.name%></div></a>
+            </li>
+        <%}%>
+    </ul>
+</div>
+<script src="/lib/mui-master/dist/js/mui.min.js"></script>
+</body>
+
+</html>

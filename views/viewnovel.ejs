@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>测试页面</title>
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="/lib/jquery-easyui-1.5/jquery.min.js"></script>
+    <script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<% include head.ejs %>
+<div class="container">
+    <div class="row" >
+        <div class="col-lg-4" style="float:left;">
+            <div style="border: 1px solid #cccccc;">
+            <li class="list-group-item" style="background-color: #A6D3E8;width:360px;height:42px;margin-bottom: 5px;">小说章节</li>
+            <img src="<%=data.imgUrl%>" width="150" height="200" style="margin-left: 20px;box-shadow: 10px 10px #ccc" />
+            <div style="float:right">
+                <div style="width:160px; height:150px;">
+                    <h4><%=data.name%></h4>
+                    <p>作者：<%=data.author%></p>
+                    <p>更新时间：<%=data.lastUpdateTime.toLocaleString()%></p>
+                </div>
+                <p class="btn-group">
+                    <a href="/viewnovel?id=<%=data._id%>"class="btn btn-primary" role="button">
+                        查看章节
+                    </a>
+                    <a href="/viewsection?id=<%=data._id%>"class="btn btn-default" role="button">
+                        阅读
+                    </a>
+                </p>
+            </div>
+            <h5 style="margin-top: 20px;">简介:<%=data.description%></h5>
+        </div>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-7" height="500px" style="overflow: scroll;">
+            <li  class="list-group-item" style="background-color: #A6D3E8;">小说章节</li>
+            <ul class="list-group" style="height:500px;">
+                    <%for(var item of data.sections){%>
+                       <li  class="list-group-item" style="list-style: none;">
+                            <a href="/viewsection?id=<%=data._id%>&index=<%=item.index%>"><%=item.name%></a>
+                       </li>
+                    <%}%>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<% include footer.ejs%>
+</body>
+</html>

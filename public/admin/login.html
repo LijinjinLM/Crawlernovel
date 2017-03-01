@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>管理登录</title>
+    <link rel="stylesheet" href="../lib/jquery-easyui-1.5/themes/default/easyui.css"/>
+    <link rel="stylesheet" href="../lib/jquery-easyui-1.5/themes/icon.css"/>
+    <script src="../lib/jquery-easyui-1.5/jquery.min.js"></script>
+    <script src="../lib/jquery-easyui-1.5/jquery.easyui.min.js"></script>
+    <script src="../lib/jquery-easyui-1.5/locale/easyui-lang-zh_CN.js"></script>
+    <style>
+        th{
+            text-align: right;
+        }
+    </style>
+    <script>
+        $.extend($.fn.validatebox.defaults.rules, {
+            userName: {
+                validator: function(value){
+                    return  /^[a-z][a-z0-9_]{3,15}$/i.test(value);
+                },
+                message: '只允许输入英文字母，数字，下划线,长度在4到16个字符之间'
+            }
+        });
+        $(function(){
+            $('#btn_login').on('click',function(){
+                $('#login').form('submit',{
+                    url:'/ajax/admins?ac=checkLogin',
+                    onSubmit: function(){
+                        var isValid = $(this).form('validate');
+                        return isValid;	// return false will stop the form submission
+                    },
+                    onProgress:function(percent){
+                        $.messager.progress();
+                    },
+                    success:function(data){//将JSON转为对象  Jquery方法
+                        var result= $.parseJSON(data);
+                        if(result.error){   //如果错了
+                            $.messager.alert('登录失败',result.msg,'error');
+                        }else{//如果没错//跳转页面
+                            window.location.href='main.html';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="easyui-window" width="400px" height="160px" title="管理登录" iconCls="icon-man" closable="false" minimizable="false" maximizable="false" resizable="false" modal="true" style="padding:10px">
+   <form id="login" method="post">
+    <table border="0" cellpadding="3" cellspacing="2" width="100%">
+        <tr>
+            <th style="width:120px;">用户名：</th>
+            <td><input  name="loginId" type="text" class="easyui-textbox" required="true" validType=" userName" /></td>
+        </tr>
+        <tr>
+            <th>密码：</th>
+            <td><input  name="loginPass" type="password" class="easyui-passwordbox" required="true" validType=" length[4,16]"/></td>
+        </tr>
+        <tr style="text-align:center;" >
+            <td colspan="2"><a id="btn_login" href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" >登 录</a></td>
+        </tr>
+    </table>
+   </form>
+</div>
+</body>
+</html>
